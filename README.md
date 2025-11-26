@@ -1,21 +1,47 @@
-# Practice building highly efficient solutions1. Project Setup in IntelliJ
+# Order Management Service
 
-Project: Maven
+The **Order Management Service** is a Spring Boot–based microservice responsible for handling the full lifecycle of customer orders—from creation to completion. It exposes REST APIs, publishes domain events, and integrates with other microservices through an event-driven architecture.
 
-Language: Java
+---
 
-Spring Boot: 3.x.x
+## 🚀 Features
 
-Add dependencies:
+- Create, update, and retrieve orders  
+- Status management (Pending → Confirmed → In-Progress → Delivered)  
+- Communication via REST and Kafka events  
+- Integration with Inventory, Payment, and Notification services  
+- Uses a centralized Discovery Server for service registry  
+- Includes validations, exception handling, and logging
 
-Spring Web
+---
 
-Spring Data JPA
+## 🏗️ Architecture Overview
 
-MySQL Driver
+- **Tech Stack:**  
+  - Spring Boot  
+  - Spring Web  
+  - Spring Data JPA  
+  - Spring Cloud (Eureka Client)  
+  - Kafka (Producer)  
+  - MySQL/PostgreSQL  
+- **Pattern Used:**  
+  - Microservices  
+  - Event-Driven architecture  
+  - Domain-driven design (DDD)  
+  - Log aggregation + centralized config
 
-Name the project: order-management
+---
 
-Package name: com.example.ordermanagement
+## 📌 API Endpoints
 
-Validating the API using Postman
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/orders` | Create a new order |
+| GET | `/orders/{id}` | Get order by ID |
+| PUT | `/orders/{id}/status` | Update order status |
+| GET | `/orders/customer/{customerId}` | Orders by customer |
+
+---
+
+## 🗄 Database Schema (Sample)
+
