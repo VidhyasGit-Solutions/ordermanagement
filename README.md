@@ -1,4 +1,4 @@
-1. Project Setup in IntelliJ
+# Practice building highly efficient solutions1. Project Setup in IntelliJ
 
 Project: Maven
 
