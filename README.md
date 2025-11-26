@@ -45,3 +45,56 @@ The **Order Management Service** is a Spring Boot–based microservice responsib
 
 ## 🗄 Database Schema (Sample)
 
+orders (
+id BIGINT PK,
+customer_id BIGINT,
+items JSON,
+total_amount DECIMAL,
+status VARCHAR,
+created_at TIMESTAMP,
+updated_at TIMESTAMP
+)
+
+
+---
+
+## 🔄 Event Publishing
+
+The service publishes events like:
+
+- `order.created`
+- `order.confirmed`
+- `order.cancelled`
+- `order.delivered`
+
+Consumers: Inventory, Payment, Notification services.
+
+---
+
+## ⚙️ Configuration
+
+```properties
+server.port=8082
+spring.application.name=order-service
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka
+spring.datasource.url=jdbc:mysql://localhost:3306/ordersdb
+
+Running Locally
+
+Start Discovery Server
+Start Kafka/Zookeeper
+Run the service:
+
+mvn spring-boot:run
+
+mvn clean install
+
+# Future Enhancements
+
+Add saga pattern for end-to-end order lifecycle
+
+Implement scalable event retry mechanisms
+
+Introduce GraphQL API layer
+
+Containerize using Docker & deploy via Kubernetes
